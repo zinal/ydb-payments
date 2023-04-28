@@ -33,9 +33,9 @@ CREATE TABLE `demo-payments/saldo`(
     day Date NOT NULL,
     acc_id String NOT NULL,
     num_trans UInt32,
-    saldo Decimal(22,9),
-    turn_dt Decimal(22,9),
-    turn_kt Decimal(22,9),
+    saldo Int64,
+    turn_dt Int64,
+    turn_kt Int64,
     PRIMARY KEY(day, acc_id)
 ) WITH (
    AUTO_PARTITIONING_BY_SIZE = ENABLED,
@@ -52,7 +52,7 @@ CREATE TABLE `demo-payments/transaction`(
     acc_kt String,
     num_dt UInt32,
     num_kt UInt32,
-    amount Decimal(22,9),
+    amount Int64,
     reason Utf8,
     state Int32,
     PRIMARY KEY(id)
@@ -81,13 +81,13 @@ CREATE TABLE `demo-payments/inbox`(
     acc_dt String,
     num_dt UInt32,
     acc_kt String,
-    amount Decimal(22,9),
+    amount Int64,
     reason Utf8,
     PRIMARY KEY(id)
 ) WITH (
    AUTO_PARTITIONING_BY_SIZE = ENABLED,
    AUTO_PARTITIONING_BY_LOAD = ENABLED,
-   AUTO_PARTITIONING_PARTITION_SIZE_MB = 500,
+   AUTO_PARTITIONING_PARTITION_SIZE_MB = 100,
    AUTO_PARTITIONING_MIN_PARTITIONS_COUNT = 500,
    AUTO_PARTITIONING_MAX_PARTITIONS_COUNT = 600
 );
