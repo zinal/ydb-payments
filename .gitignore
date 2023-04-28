@@ -1,0 +1,5 @@
+/target/
+nbactions.xml
+nb-configurations.xml
+*.bak
+*.tmp
